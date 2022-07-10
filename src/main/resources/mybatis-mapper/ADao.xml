@@ -27,7 +27,7 @@
    
    <insert id="registerDao">
    		INSERT INTO concert(cnum, ctitle, cplace, cstartdate, cenddate, ctime, pic, cprice)
-   		values (concert_seq.nextval, #{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7})
+   		values (concert_seq.nextval, #{param1},#{param2},to_date(#{param3},'YYYY-MM-DD'),to_date(#{param4},'YYYY-MM-DD'),#{param5},#{param6},#{param7})
    </insert>
    
    <select id="checkRegister" resultType="int">

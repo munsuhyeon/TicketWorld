@@ -18,13 +18,6 @@
 	<div>
 		<h1><a href="${pageContext.request.contextPath}/"><img src="<c:url value="/resources/img/mainlogo.png"/>"></a></h1>
 		<h2 class="hide">대메뉴</h2>
-		<!--  <nav>
-			<ul>
-				<li><a href="concert">콘서트</a></li>
-				<li><a href="musical">뮤지컬</a></li>
-				<li><a href="drama">연극</a></li>
-			</ul>
-		</nav>-->			
 			<ul class="spot">
 				<li>
 				<% 	String sessionId = (String)session.getAttribute("id");

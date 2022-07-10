@@ -119,12 +119,12 @@ public class AdminController {
 		ADao dao = sqlSession.getMapper(ADao.class);
 		int checkTitleFlag = dao.checkRegister(request.getParameter("title"));
 		model.addAttribute("checkTitleFlag", checkTitleFlag);
+		System.out.println(checkTitleFlag);
 		if(checkTitleFlag != 1) {
-			dao.registerDao(request.getParameter("title"), request.getParameter("place"), request.getParameter("sdate"),
-					request.getParameter("edate"),request.getParameter("time"), request.getParameter("pic"), request.getParameter("price"));
+			dao.registerDao(request.getParameter("title"), request.getParameter("place"), request.getParameter("sdate"),request.getParameter("edate"),
+					Integer.parseInt(request.getParameter("time")),  request.getParameter("pic"), Integer.parseInt(request.getParameter("price")));
 		}
-		
-		return "./admin/admin_register";
+		return "redirect:/admin_concertlist";
 	}
 	@RequestMapping(value="/admin_concertlist")
 	public String admin_concertlist(Model model) {

@@ -44,9 +44,6 @@ public class WebController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		model.addAttribute("index",dao.indexDao());
-		//ArrayList<ConcertDto> dtos = dao.indexDao();
-		//ConcertDto dto = dtos.get(0);
-		//System.out.println(dto.getcenddate());
 		return "index";
 	}
 	@RequestMapping(value="/login")
@@ -170,14 +167,11 @@ public class WebController {
 	@RequestMapping(value="/qview")
 		public String qview(HttpServletRequest request, Model model) {
 			
-			HttpSession session = request.getSession();
+			
 			IDao dao = sqlSession.getMapper(IDao.class);
 			dao.boardhit(request.getParameter("bnum"));
 			model.addAttribute("qview", dao.viewDao(request.getParameter("bnum")));
-			String sessionId = (String)session.getAttribute("id");
-			MemberDto memberDto = dao.loginOkDao(sessionId);
 			
-			model.addAttribute("memberDto",memberDto);
 			return "qview";
 		}
 	@RequestMapping(value="/delete")

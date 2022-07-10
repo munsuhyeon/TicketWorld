@@ -33,8 +33,7 @@ color:#ffd938;
 
 <form action="modify" method="post" name="reg_frm">
 <input type="hidden" name="bnum" value="${qview.bnum }">
-<%String mid = (String)session.getAttribute("id"); %>
-<input type="hidden" name="mid" value="<%= mid %>">
+<input type="hidden" name="mid" value="${qview.bid }">
 
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">아이디</label>
@@ -58,29 +57,19 @@ color:#ffd938;
 
 <div class="btn_area">
 
-	<%	if(sessionId == null){ %>
-		<input type="button" class="btn btn-warning" id="btn" value="글목록" onclick="javascripot:window.location='list'">
-	<%} %>
-	
-		<script type="text/javascript">
-			var sid = '<%=(String)session.getAttribute("id")%>';
-		</script>
-		<c:if test="${!qview.bid == sid and sid != 'admin'}">
+		<c:set var="this" value="${qview.bid }"/>
+		<%String bid = (String)pageContext.getAttribute("this"); %>
+
+		<%	if(sessionId == null){ %>
 			<input type="button" class="btn btn-warning" id="btn" value="글목록" onclick="javascripot:window.location='list'">
-		</c:if>
-		<c:if test="${qview.bid == memberDto.mid and sid != 'admin'}">
+		<%}%>
+		<%if(bid.equals(sessionId)){%>
 			<input type="button" class="btn btn-warning" id="btn" value="글목록" onclick="javascripot:window.location='list'">
 			<input type="submit" class="btn btn-warning" id="btn" value="글수정">
 			<input type="button" class="btn btn-warning" id="btn" value="글 삭제" onclick="location='delete?bnum=${qview.bnum}'">
-	 	</c:if>
-
- 	
-	<% if(sessionId.equals("admin")){%>
-		<input type="button" class="btn btn-warning" id="btn" value="글목록" onclick="javascripot:window.location='admin_cicboard'">
-		<input type="button" class="btn btn-warning" id="btn" value="글 삭제" onclick="location='delete?bnum=${qview.bnum}'">
-		<input type="button" class="btn btn-warning" id="btn" value="답변쓰기" onclick="location='reply?bnum=${qview.bnum}'">
-	<% }%>
-	
+		<%}else if(bid != sessionId && sessionId != null){%>
+			<input type="button" class="btn btn-warning" id="btn" value="글목록" onclick="javascripot:window.location='list'">
+			<%} %>
   </div>
 
 <%@ include file="include/footer.jsp" %>
