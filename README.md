@@ -10,6 +10,9 @@
 
 <br/>
 
+## 화면 구성도
+<br/>
+
 ## 시연 영상
 [시연영상 유튜브 링크](https://youtu.be/H2gnkkp3WeQ)
 <br/>
