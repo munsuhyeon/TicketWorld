@@ -23,3 +23,4 @@
 <br/>
 
 ## 프레젠테이션 파일 다운로드
+[ppt 다운로드 링크](https://github.com/munsuhyeon/TicketWorld/blob/master/TicketWorld.pptx)
